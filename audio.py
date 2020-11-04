@@ -4,6 +4,11 @@ from tkinter import *
 from tkinter import messagebox
 import sounddevice as sd
 import soundfile as sf
+import sounddevice as sd
+import numpy as np
+import scipy.io.wavfile as wav
+from thinkdsp import read_wave
+import matplotlib.pyplot as plt
 
 
 def audio_capture():
@@ -43,10 +48,7 @@ def audio_capture():
     wf.writeframes(b''.join(frames))
     wf.close()
 
-    top = Tk()
-    top.geometry("100x100")
     messagebox.showinfo("information", "Recording finished")
-    # top.mainloop()
 
 
 def play_sound():
@@ -56,3 +58,29 @@ def play_sound():
     sd.play(data, fs)
     status = sd.wait()  # Wait until file is done playing
 
+
+def audio_capture_opt2():
+    fs = 44100
+    duration = 5  # seconds
+    myrecording = sd.rec(duration * fs, samplerate=fs, channels=2, dtype='float64')
+    print("Recording Audio")
+    sd.wait()
+    print("Audio recording complete , Play Audio")
+    sd.play(myrecording, fs)
+    sd.wait()
+    print("Play Audio Complete")
+
+
+def read_audio_file():
+    wave1 = read_wave("output.wav")
+    start = 1.2
+    duration = 0.6
+    segment = wave1.segment(start, duration)
+    fig, (ax1, ax2) = plt.subplots(2)
+    fig.suptitle('Audio wave and spectrum')
+    ax1.plot(segment.ts, segment.ys)
+    spectrum = segment.make_spectrum()
+    ax2.plot(spectrum.fs, spectrum.amps)
+    # plt.figure()
+    # spectrum.plot()
+    plt.show()
