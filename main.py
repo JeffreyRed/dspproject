@@ -1,7 +1,8 @@
 from random import choice
-from tkinter import *
-import matplotlib.pyplot as plt
 import numpy as np
+from gui import *
+from audiocapture import *
+
 
 class Person:
 
@@ -16,33 +17,12 @@ class Person:
         return self.greeting.format(name=self.name)
 
 
-def create_window():
-    window = Tk()
-    window.geometry("500x400")
-    window.title("DSP Tool")
-    label1 = Label(window, text="DSP Tool", font=("arial", 16, "bold")).pack()
-    label2 = Label(window, text="Select the option you would like to use", font=("arial", 16)).pack()
-    # label2 = Label(window, text="plot", font=("arial", 16)).place(x=10, y=60)
-    plot_button = Button(window, text="PLOT", relief=RAISED, command=plot_test).pack()
-    window.mainloop()
-
-
-def plot_test():
-    z = [0, 1, 2, 3, 4, 5, 6, 7]
-    y = [0, 1, 2, 3, 4, 5, 6, 7]
-    plt.plot(z, y)
-    plt.show()
-
-
 def main():
-    people = [
-        Person('1'),
-        Person('2'),
-        Person('3'),
-    ]
-    person = choice(people)
-    print(person)
-    create_window()
+    wn = Gui(400, 400, title="DSP Tool")
+    wn.create_label("Choose one Option")
+    wn.create_button("Plot", plot_test)
+    wn.create_button("Record Audio", audio_capture)
+    wn.load_window()
 
 
 if __name__ == '__main__':
