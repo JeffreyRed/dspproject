@@ -1,6 +1,7 @@
 from random import choice
 from tkinter import *
-
+import matplotlib.pyplot as plt
+import numpy as np
 
 class Person:
 
@@ -21,7 +22,16 @@ def create_window():
     window.title("DSP Tool")
     label1 = Label(window, text="DSP Tool", font=("arial", 16, "bold")).pack()
     label2 = Label(window, text="Select the option you would like to use", font=("arial", 16)).pack()
+    # label2 = Label(window, text="plot", font=("arial", 16)).place(x=10, y=60)
+    plot_button = Button(window, text="PLOT", relief=RAISED, command=plot_test).pack()
     window.mainloop()
+
+
+def plot_test():
+    z = [0, 1, 2, 3, 4, 5, 6, 7]
+    y = [0, 1, 2, 3, 4, 5, 6, 7]
+    plt.plot(z, y)
+    plt.show()
 
 
 def main():
