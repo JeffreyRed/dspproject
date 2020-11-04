@@ -23,7 +23,7 @@ class Gui:
         self.btnList.append(Button(self.window, text=text, relief=RAISED, command=function).pack())
 
     def create_label(self, text):
-        self.lblList.append(Label(self.window, text="DSP Tool", font=("arial", 16, "bold")).pack())
+        self.lblList.append(Label(self.window, text=text, font=("arial", 16, "bold")).pack())
 
     def create_window(self):
         self.load_window()

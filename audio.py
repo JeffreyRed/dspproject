@@ -2,6 +2,9 @@ import pyaudio
 import wave
 from tkinter import *
 from tkinter import messagebox
+import sounddevice as sd
+import soundfile as sf
+
 
 def audio_capture():
     CHUNK = 1024
@@ -44,4 +47,12 @@ def audio_capture():
     top.geometry("100x100")
     messagebox.showinfo("information", "Recording finished")
     # top.mainloop()
+
+
+def play_sound():
+    filename = 'output.wav'
+    # Extract data and sampling rate from file
+    data, fs = sf.read(filename, dtype='float32')
+    sd.play(data, fs)
+    status = sd.wait()  # Wait until file is done playing
 
