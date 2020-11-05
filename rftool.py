@@ -4,7 +4,10 @@ import matplotlib.pyplot as plt
 
 def plot_demo_rf():
     ring_slot = Network('ring slot.s2p')
+    plt.figure()
     ring_slot.plot_s_smith()
+    plt.figure()
+    ring_slot.plot_s_db()
     plt.show()
     plt.title("S-Parameters")
 
