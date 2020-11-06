@@ -1,5 +1,6 @@
 from tkinter import *
 import matplotlib.pyplot as plt
+from logcapture import *
 
 
 def plot_test():
@@ -8,6 +9,7 @@ def plot_test():
     plt.title('Demo Data')
     plt.xlabel('x')
     plt.ylabel('x')
+    data_log("Plotted demo data")
     plt.show()
 
 
@@ -30,4 +32,5 @@ class Gui:
         self.load_window()
 
     def load_window(self):
+        data_log("GUI created")
         self.window.mainloop()

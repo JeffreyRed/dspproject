@@ -1,5 +1,6 @@
 from skrf import Network, Frequency
 import matplotlib.pyplot as plt
+from logcapture import *
 
 
 def plot_demo_rf():
@@ -8,8 +9,10 @@ def plot_demo_rf():
     ring_slot.plot_s_smith()
     plt.figure()
     ring_slot.plot_s_db()
-    plt.show()
     plt.title("S-Parameters")
+    data_log("plot demo data")
+    plt.show()
+
 
 
 def plot_three_load():
@@ -28,4 +31,5 @@ def plot_three_load():
     plt.text(0, -0.85, "0-1j", fontsize=12, bbox=dict(facecolor='red', alpha=0.5))
     plt.text(0.28, -0.43, "0.23-0.43j", fontsize=12, bbox=dict(facecolor='red', alpha=0.5))
     plt.title("S-Parameters")
+    data_log("plot some predefined loads in the smith char using skrf")
     plt.show()

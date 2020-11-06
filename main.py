@@ -1,13 +1,11 @@
-from random import choice
-import numpy as np
 from gui import *
 from audio import *
 from rftool import *
-from thinkdsp import read_wave
-import matplotlib.pyplot as plt
+from logcapture import *
 
 
 def main():
+    data_log("Program has started")
     width = 800
     height = 400
     wn = Gui(width, height, title="DSP & RF Tool")

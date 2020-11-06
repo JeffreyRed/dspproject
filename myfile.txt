@@ -1,0 +1,5 @@
+2020-11-06 14:22:03.3686062020-11-06 14:22:48.693506
+2020-11-06 14:23:33.955589
+2020-11-06 14:24:06.270073
+2020-11-06 14:25:12.938092
+2020-11-06 14:25:33.3896692020-11-06 14:33:18.897451  Program has started2020-11-06 14:33:19.091191  GUI created2020-11-06 14:33:28.715179  Plotted demo data2020-11-06 14:33:49.705622  Audio recorded as saved as output.wav2020-11-06 14:34:06.477764  using another method to record and play audio2020-11-06 14:34:12.795010  play sound output.wav2020-11-06 14:34:14.592563  Spectrum Calculated2020-11-06 14:34:14.608565  audio file read and played2020-11-06 14:34:19.857051  plot demo data2020-11-06 14:34:25.062611  plot some predefined loads in the smith char using skrf

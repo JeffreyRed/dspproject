@@ -9,6 +9,7 @@ import numpy as np
 import scipy.io.wavfile as wav
 from thinkdsp import read_wave
 import matplotlib.pyplot as plt
+from logcapture import *
 
 
 def audio_capture():
@@ -49,6 +50,7 @@ def audio_capture():
     wf.close()
 
     messagebox.showinfo("information", "Recording finished")
+    data_log("Audio recorded as saved as output.wav")
 
 
 def play_sound():
@@ -57,6 +59,7 @@ def play_sound():
     data, fs = sf.read(filename, dtype='float32')
     sd.play(data, fs)
     status = sd.wait()  # Wait until file is done playing
+    data_log("play sound output.wav")
 
 
 def audio_capture_opt2():
@@ -69,6 +72,7 @@ def audio_capture_opt2():
     sd.play(myrecording, fs)
     sd.wait()
     print("Play Audio Complete")
+    data_log("using another method to record and play audio")
 
 
 def read_audio_file():
@@ -86,12 +90,14 @@ def read_audio_file():
     # plt.plot(spectrum.fs, spectrum.amps)
     # plt.figure()
     # spectrum.plot()
+    data_log("audio file read and played")
     plt.show()
 
 
-def calculate_spectrum(wave):
-    n = len(wave.ys)
-    d = 1 / wave.framerate
-    hs = abs(np.fft.fft(wave.ys))
+def calculate_spectrum(wave_data):
+    n = len(wave_data.ys)
+    d = 1 / wave_data.framerate
+    hs = abs(np.fft.fft(wave_data.ys))
     fs = np.fft.fftfreq(n, d)
+    data_log("Spectrum Calculated")
     return fs, hs
