@@ -79,8 +79,19 @@ def read_audio_file():
     fig, (ax1, ax2) = plt.subplots(2)
     fig.suptitle('Audio wave and spectrum')
     ax1.plot(segment.ts, segment.ys)
-    spectrum = segment.make_spectrum()
-    ax2.plot(spectrum.fs, spectrum.amps)
+    # spectrum = segment.make_spectrum()
+    spec = calculate_spectrum(wave1)
+    ax2.plot(spec[0], spec[1])
+    # plt.figure()
+    # plt.plot(spectrum.fs, spectrum.amps)
     # plt.figure()
     # spectrum.plot()
     plt.show()
+
+
+def calculate_spectrum(wave):
+    n = len(wave.ys)
+    d = 1 / wave.framerate
+    hs = abs(np.fft.fft(wave.ys))
+    fs = np.fft.fftfreq(n, d)
+    return fs, hs
